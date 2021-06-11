@@ -24,8 +24,21 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class ShoppingCartPage extends StatelessWidget {
+class ShoppingCartPage extends StatefulWidget {
   const ShoppingCartPage({Key? key}) : super(key: key);
+
+  @override
+  _ShoppingCartPageState createState() => _ShoppingCartPageState();
+}
+
+class _ShoppingCartPageState extends State<ShoppingCartPage> {
+  int selectedIconNum = 0;
+  List<String> selectPic = [
+    "assets/p1.jpeg",
+    "assets/p2.jpeg",
+    "assets/p3.jpeg",
+    "assets/p4.jpeg",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -153,10 +166,11 @@ class ShoppingCartPage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          ProductIcon(Icons.directions_bike),
-          ProductIcon(Icons.motorcycle),
-          ProductIcon(CupertinoIcons.car_detailed),
-          ProductIcon(CupertinoIcons.airplane),
+          ProductIcon(0, selectedIconNum, Icons.directions_bike, changeIcon),
+          ProductIcon(1, selectedIconNum, Icons.motorcycle, changeIcon),
+          ProductIcon(
+              2, selectedIconNum, CupertinoIcons.car_detailed, changeIcon),
+          ProductIcon(3, selectedIconNum, CupertinoIcons.airplane, changeIcon),
         ],
       ),
     );
@@ -168,10 +182,16 @@ class ShoppingCartPage extends StatelessWidget {
       child: AspectRatio(
         aspectRatio: 5 / 3,
         child: Image.asset(
-          "assets/p1.jpeg",
+          selectPic[selectedIconNum],
           fit: BoxFit.cover,
         ),
       ),
     );
+  }
+
+  void changeIcon(int num) {
+    setState(() {
+      selectedIconNum = num;
+    });
   }
 }

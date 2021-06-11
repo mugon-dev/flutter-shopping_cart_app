@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class ProductIcon extends StatelessWidget {
+  final int productNum;
+  final int selectedIconNum;
   final IconData mIcon;
+  final Function changeIcon;
 
   const ProductIcon(
-    this.mIcon, {
+    this.productNum,
+    this.selectedIconNum,
+    this.mIcon,
+    this.changeIcon, {
     Key? key,
   }) : super(key: key);
 
@@ -16,12 +22,12 @@ class ProductIcon extends StatelessWidget {
       width: 70,
       height: 70,
       decoration: BoxDecoration(
-        color: kSecondaryColor,
+        color: productNum == selectedIconNum ? kAccentColor : kSecondaryColor,
         borderRadius: BorderRadius.circular(20),
       ),
       child: IconButton(
         onPressed: () {
-          print("클릭됨");
+          changeIcon(productNum);
         },
         icon: Icon(
           mIcon,
