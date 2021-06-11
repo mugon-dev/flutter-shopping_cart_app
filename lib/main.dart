@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shopping_cart/constants.dart';
 
+import 'components/color_icon.dart';
 import 'components/product_icon.dart';
 
 void main() {
@@ -68,6 +69,7 @@ class ShoppingCartPage extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(30.0),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -91,26 +93,11 @@ class ShoppingCartPage extends StatelessWidget {
                 SizedBox(height: 10),
                 Row(
                   children: [
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
-                    Icon(
-                      Icons.star,
-                      color: Colors.yellow,
-                    ),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
+                    Icon(Icons.star, color: Colors.yellow),
                     Spacer(),
                     Text("review "),
                     Text(
@@ -119,6 +106,39 @@ class ShoppingCartPage extends StatelessWidget {
                     ),
                   ],
                 ),
+                SizedBox(height: 20),
+                Text("Color Options"),
+                SizedBox(height: 10),
+                Row(
+                  children: [
+                    ColorIcon(Colors.black),
+                    ColorIcon(Colors.green),
+                    ColorIcon(Colors.orange),
+                    ColorIcon(Colors.grey),
+                    ColorIcon(Colors.white),
+                  ],
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Align(
+                  child: TextButton(
+                    onPressed: () {},
+                    child: Text(
+                      "Add to Cart",
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    style: TextButton.styleFrom(
+                      backgroundColor: kAccentColor,
+                      minimumSize: Size(300, 50),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                    ),
+                  ),
+                )
               ],
             ),
           ),
